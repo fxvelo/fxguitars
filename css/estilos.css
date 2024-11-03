@@ -14,6 +14,7 @@
 :root {
     --box-shadow: 0.5rem 0.5rem 1rem rgba(229, 229, 229, 0.5);
     
+    --color-blanco: white;
     --color-gris: #797979;
     --color-gris-oscuro: #4D4D4D;
     --color-marron: #A52A2A;
@@ -178,11 +179,12 @@ header {
     background-color: var(--color-verde);
     border-radius: 5px; 
     margin: auto;
+    text-align: center;
     padding: 10px 20px;
     font-weight: bold;
     font-size: large;
     cursor: pointer;
-    width: 4.5rem;
+    width: 5rem;
 }
 
 .item-catalogo a:hover {
@@ -195,6 +197,42 @@ header {
     width: 70%;
     margin: 2.5rem auto;
     display: block;
+}
+
+.item-index {
+    text-align: center;
+    background-color: var(--color-blanco);
+    box-shadow: var(--box-shadow); 
+    border-radius: 5px;
+    height: 300px;
+    width: 250px;
+    margin: 0 2rem;
+    margin-top:4rem;
+}
+
+.item-index a {
+    display: block;
+    color: var(--color-blanco);
+    background-color: var(--color-marron);
+    border-radius: 5px; 
+    margin: -10px auto;
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: bold;
+    font-size: large;
+    cursor: pointer;
+    width: 12rem;
+}
+
+.item-index a:hover {
+    background-color: var(--color-naranja);
+    border-radius: 5px;
+}
+
+.item-index img {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    width: 85%;
 }
 
 #logo {
@@ -245,6 +283,10 @@ header {
 #main-index {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../img/portada-heavy.jpg");
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 main img {
     width: 100%;
