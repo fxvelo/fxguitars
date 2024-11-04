@@ -1,6 +1,6 @@
 # fx guitars
 
-Es un ejemplo de sitio web realizado para Talento Tech 2024, utilizando:
+Es un ejemplo de sitio web para un luthier, realizado para Talento Tech 2024, utilizando:
 
 * HTML 5  
 * Estructura semántica  
