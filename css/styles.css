@@ -21,68 +21,63 @@
 /* Variables */
 
 :root {
-    --bg-color: black;
+    --black-color: black;
+    --brown-color: #A52A2A;
+    --darkgrey-color: #4D4D4D;
+    --grey-color: #BBBBBB;
+    --orange-color: #FFA500;
+    --red-color: red;
+    --text-color: #E5E5E5;
 
     --box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0.1);
     --box-shadow-1: 0 0.5rem 1.5rem rgba(0, 0, 0.1);
-    --brown-color: #A52A2A;
-    --darkgrey-color: #4D4D4D;
-    --orange-color: #FFA500;
     --outline: .1rem solid rgba(0, 0, 0, 0.1);
-    --text-color: #E5E5E5;
 }
 
-#copyright {
-    text-align: center;
-    font-size: smaller;
-    padding: 0.5rem;
-}
 
-.footer-box {
-    display: inline-block;
-    padding: 1rem;
-    font-size: smaller;
-}
-
-.footer-box a {
-    display: block;
-    color: var(--bg-color);
-}
-
-.footer-box a:hover {
-    color: var(--orange-color);
-}
-
-.footer-box p {
-    margin: 0.5rem auto;
-}
-
-.footer-box input {
-    border: 1px solid grey;
-    border-radius: 5px;
-    padding: 0.5rem;
-}
-
-#footer-content {
-    color: var(--bg-color);
-    display: flex;
-    justify-content: space-between;
-} 
+/* header */
+/**********/
 
 header {
     color: var(--text-color);
-    background-color: var(--bg-color);
+    background-color: var(--black-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
+} 
 
-#footer-logo {
+/* logo */
+
+#logo {
+    color: var(--text-color);
     font-family: "Charm", serif;
     font-weight: 700;
     font-style: normal;
-    font-size: x-large;
+    font-size: xx-large;
+    margin: 0.5rem 1rem;
 }
+
+#logo:hover {
+    color: var(--orange-color);
+}
+
+/* navbar */
+
+#navbar {
+    display: inline-block;
+}
+
+#navbar a {
+    color: var(--text-color);
+    font-weight: 700;
+    margin: 0 0.5rem;
+}
+
+#navbar a:hover {
+    color: var(--orange-color);
+}
+
+/* icons */
 
 #icons {
     display: flex;
@@ -99,36 +94,23 @@ header {
     color: var(--orange-color);
 }
 
-#logo {
-    color: var(--text-color);
-    font-family: "Charm", serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: xx-large;
-    margin: 0.5rem 1rem;
-}
-
-#logo:hover {
-    color: var(--orange-color);
-}
+/* menu-btn */
 
 #menu-btn {
     display: none;
 }
 
-#navbar {
-    display: inline-block;
+
+/* main */
+/********/
+
+main {
+    background-color: var(--text-color);
 }
 
-#navbar a {
-    color: var(--text-color);
-    font-weight: 700;
-    margin: 0 0.5rem;
-}
+/* index.html */
 
-#navbar a:hover {
-    color: var(--orange-color);
-}
+/* panel-image */
 
 .panel-image {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../img/panel-guitars.jpg") no-repeat center; 
@@ -136,6 +118,37 @@ header {
     height: 600px;
     position:relative;
 }
+
+/* panel-text */
+
+.panel-text {
+    position: absolute;
+    color: var(--text-color);
+    text-align: center;
+    font-size:xx-large;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.panel-text a {
+    text-align: center;
+    border: none;
+    margin-top: 0.5rem;
+    color: var(--text-color);
+    background-color: var(--brown-color);
+    border-radius: 5px; 
+    padding: 5px 20px;
+    font-weight: bold;
+    font-size: large;
+    cursor: pointer;
+}
+
+.panel-text a:hover {
+    background-color: var(--orange-color);
+}
+
+/* panel-opinion */
 
 .panel-opinion {
     display: grid;
@@ -165,43 +178,146 @@ header {
     padding: 1rem;
 }
 
-.panel-text {
-    position: absolute;
-    color: var(--text-color);
-    text-align: center;
-    font-size:xx-large;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.panel-text a {
-    text-align: center;
-    border: none;
-    margin-top: 0.5rem;
-    color: var(--text-color);
-    background-color: var(--brown-color);
-    border-radius: 5px; 
-    padding: 5px 20px;
-    font-weight: bold;
-    font-size: large;
-    cursor: pointer;
-}
-
-.panel-text a:hover {
-    background-color: var(--orange-color);
-}
+/* stars */
 
 .stars {
     color:var(--orange-color);
 }
+
+/* detail-*.html */
+
+/* detail-block */
+
+.detail-block {
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 1rem;
+}
+
+/* detail-image */
+
+.detail-image img {
+    margin: 2rem 0;
+    width: 100%;
+}
+
+/* price */
+
+.price {
+    color: var(--red-color);
+    padding-bottom: 1rem;
+}
+
+/* btn-add-cart */
+
+.btn-add-cart {
+    text-align: center;
+    color: var(--text-color);
+    background-color: var(--brown-color);
+    border-radius: 5px; 
+    padding: 5px;
+    margin-top: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-add-cart:hover {
+    background-color: var(--orange-color);
+}
+
+/* table */
+
+table {
+    border-collapse: collapse;
+    margin: 2rem auto;
+}
+
+/* th, td */
+
+th, td {
+    border-bottom: 1px solid var(--grey-color);
+    text-align: left;
+    padding: 0.5rem;
+}
+
+/* productos.html */
+
+/* product-detail */
+
+/* product-detail {
+}*/
+
+/* product-item */
+
+.product-item {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.product-item img {
+    margin: 2rem 0;
+    width: 100%;
+    border: 1px solid grey;
+    cursor: zoom-in;
+}
+
+
+/* footer */
+/**********/
+
+/* footer-content */
+
+#footer-content {
+    color: var(--black-color);
+    display: flex;
+    justify-content: space-between;
+} 
+
+/* footer-box */
+
+.footer-box {
+    display: inline-block;
+    padding: 1rem;
+    font-size: smaller;
+}
+
+.footer-box a {
+    display: block;
+    color: var(--black-color);
+}
+
+.footer-box a:hover {
+    color: var(--orange-color);
+}
+
+.footer-box p {
+    margin: 0.5rem auto;
+}
+
+.footer-box input {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+/* footer-logo */
+
+#footer-logo {
+    font-family: "Charm", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: x-large;
+}
+
+/* social */
 
 .social {
     display: flex;
 }
 
 .social a {
-    color: var(--bg-color);
+    color: var(--black-color);
     font-size: large;
     margin: 0.5rem 1.2rem 0.5rem 0;
 }
@@ -210,7 +326,17 @@ header {
     color: var(--orange-color);
 }
 
+/* copyright */
+
+#copyright {
+    text-align: center;
+    font-size: smaller;
+    padding: 0.5rem;
+}
+
+
 /* Media Queries */
+/*****************/
 
 @media (max-width: 991px) {
 
