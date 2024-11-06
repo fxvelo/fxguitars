@@ -108,6 +108,11 @@ main {
     background-color: var(--text-color);
 }
 
+main h1 {
+    text-align: center;
+    padding-top: 1rem;
+}
+
 /* index.html */
 
 /* panel-image */
