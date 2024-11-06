@@ -248,22 +248,25 @@ th, td {
 
 /* productos.html */
 
-/* product-detail */
+/* product-container */
 
-/* product-detail {
-}*/
+#product-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
 
 /* product-item */
 
 .product-item {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 2rem;
 }
 
 .product-item img {
-    margin: 2rem 0;
+    margin: 1rem 0;
     width: 100%;
-    border: 1px solid grey;
     cursor: zoom-in;
 }
 
