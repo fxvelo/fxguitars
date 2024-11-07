@@ -375,6 +375,7 @@ span {
 #footer-content {
     color: var(--black-color);
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 } 
 
