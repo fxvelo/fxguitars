@@ -66,7 +66,7 @@ header {
 /* navbar */
 
 #navbar {
-    display: inline-block;
+    display: block;
 }
 
 #navbar a {
@@ -77,6 +77,12 @@ header {
 
 #navbar a:hover {
     color: var(--orange-color);
+}
+
+#navbar.active {  /* JS controla la aparicion/desaparicion de 'active' */
+    display: block;
+    right: 0;
+    z-index: 10;
 }
 
 /* icons */
@@ -376,7 +382,7 @@ span {
     color: var(--black-color);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 } 
 
 /* footer-box */
@@ -443,10 +449,20 @@ span {
 /* Media Queries */
 /*****************/
 
-@media (max-width: 768px) {
+@media (max-width: 610px) {  /* era 768px */
 
     #navbar {
-        display: none;
+        position: absolute;
+        top: 10%;
+        width: 20rem;
+        color: var(--text-color);
+        background-color: var(--black-color);
+        z-index: -1;
+    }
+
+    #navbar a {
+        display: block;
+        margin: 1rem 2.5rem;
     }
 
     #menu-btn {
