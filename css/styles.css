@@ -201,7 +201,7 @@ main h1 {
 
 /* detail-block */
 
-.detail-block {
+#detail-block {
     text-align: center;
     width: 90%;
     margin: 0 auto;
