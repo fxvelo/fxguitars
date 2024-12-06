@@ -6,7 +6,6 @@ const mainContactoJS = `
 <h2>Contacto</h2>
 
 <form action="https://formspree.io/f/xyzyklpj" method="POST">
-<!--  action="https://formspree.io/f/xyzyklpj" -->
     <div>               
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" required>
