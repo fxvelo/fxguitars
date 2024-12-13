@@ -12,3 +12,4 @@ Es un ejemplo de sitio web para un luthier, realizado para Talento Tech 2024, ut
 ## ToDo
 * Generación de la página de productos desde un JSON
 * Generación de la vista de detalle del producto en JS mediante manipulacion del DOM
+* Carga del carrito de compras con el producto seleccionado
