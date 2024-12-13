@@ -1,8 +1,12 @@
-/* mainProducts.js */
+/* mainDetalle.js */
 
-/* Array de productos (JSON) */
+/* lee sessionStorage para enterarse el ID del producto a mostrar */
+let id = sessionStorage.getItem ('producto');
 
-let products = [
+/* Los indices del array estan basados en 0, mientras que los ID parten de 1 */
+let idx = id - 1;
+
+let details = [
     {
         id: 1,
         model: "Hellfire Extreme",
@@ -131,50 +135,88 @@ let products = [
     }
 ];
 
-/*
+/* Crea una referencia al <main> de detail.html */
+const main = document.getElementById("detail-block");
+main.innerHTML = `
+            <div class="detail-image">
+                <img src="${details[idx].image}" alt="${details[idx].model}">
+            </div>
 
-La seccion "main" de productos.html contiene <section id="product-container"> que será
-llenada dinamicamente con los <article> de cada producto mediante JS segun la plantilla
+            <div>
+                <h2>${details[idx].model}</h2>
+                <h4>${details[idx].color}</h4>
+                <h4 class="price">$ ${details[idx].price}</h4>
+                <a class="btn-add-cart" href="${idx}">Agregar al carrito</a>
+            </div>
 
-            <article class="product-item">
-                <a href=products.link><img src=products.image alt=products.model></a>
-                <div>
-                    <h3>products.model</h3>
-                    <h5>products.color</h5>
-                    <h5 class="price">products.price</h5>
-                    <a class="btn-add-cart" href=products.link>Ver detalles</a>
-                </div>    
-            </article>
-*/
-
-/* Crea referencia al <main> de productos.html */
-const main = document.querySelector("#mainProductos");
-
-/* Crea y agrega <section id="product-container"> */
-const section = document.createElement("section");
-section.id = "product-container";
-main.appendChild(section);
-
-/* Genera las entradas de productos */
-products.forEach(product => {
-    /* Crea y agrega <article class="product-item"> */
-    const article = document.createElement("article");
-    article.classList.add("product-item");
-    
-    article.innerHTML = `
-        <a href="detail.html" onclick="abrirDetalle(${product.id})"><img src="${product.image}" alt="${product.model}"></a>
-        <div>
-            <h3>${product.model}</h3>
-            <h5>${product.color}</h5>
-            <h5 class="price">$ ${product.price}</h5>
-            <a class="btn-add-cart" href="detail.html" onclick="abrirDetalle(${product.id})">Ver detalles</a>
-        </div> 
-    `;
-
-    section.appendChild(article);
-});
-
-function abrirDetalle(the_id) {
-    /* En realidad guarda en sessionStorage the_id para que detail.html levante los datos del producto con id = the_id */
-    sessionStorage.setItem ('producto', the_id);
-}
+            <div>
+                <table>
+                    <tr>
+                        <th colspan="2">Descripción</th>
+                    </tr>
+                    <tr>
+                        <th>Modelo</th>
+                        <td>${details[idx].model}</td>
+                    </tr>
+                    <tr>
+                        <th>Color</th>
+                        <td>${details[idx].color}</td>
+                    </tr>
+                    <tr>
+                        <th>Cuerpo</th>
+                        <td>${details[idx].body}</td>
+                    </tr>
+                    <tr>
+                        <th>Mango</th>
+                        <td>${details[idx].neck}</td>
+                    </tr>
+                    <tr>
+                        <th>Diapasón</th>
+                        <td>${details[idx].fretboard}</td>
+                    </tr>
+                    <tr>
+                        <th>Incrustaciones</th>
+                        <td>${details[idx].inlays}</td>
+                    </tr>
+                    <tr>
+                        <th>Escala</th>
+                        <td>${details[idx].scale}</td>
+                    </tr>
+                    <tr>
+                        <th>Radio</th>
+                        <td>${details[idx].radio}</td>
+                    </tr>
+                    <tr>
+                        <th>Trastes</th>
+                        <td>${details[idx].frets}</td>
+                    </tr>
+                    <tr>
+                        <th>Cejilla</th>
+                        <td>${details[idx].nut}</td>
+                    </tr>
+                    <tr>
+                        <th>Tensor</th>
+                        <td>${details[idx].tensor}</td>
+                    </tr>
+                    <tr>
+                        <th>Clavijas</th>
+                        <td>${details[idx].tuners}</td>
+                    </tr>
+                    <tr>
+                        <th>Puente</th>
+                        <td>${details[idx].bridge}</td>
+                    </tr>
+                    <tr>
+                        <th>Micrófonos</th>
+                        <td>${details[idx].pickups}</td>
+                    </tr>
+                    <tr>
+                        <th>Electrónica</th>
+                        <td>${details[idx].electronics}</td>
+                    </tr>
+                    <tr>
+                        <th>Terminación</th>
+                        <td>${details[idx].finishing}</td>
+                    </tr>
+                </table>
+            </div>`;
