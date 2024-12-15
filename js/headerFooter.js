@@ -12,12 +12,29 @@ const headerJS = `
         </nav>
 
         <div id="icons">
-            <div><i class="fa-solid fa-cart-shopping"></i></div>
+            <div id="cart-btn"><i class="fa-solid fa-cart-shopping"></i></div>
             <div><i class="fas fa-user"></i></div>
             <div id="menu-btn"><i class="fas fa-bars"></i></div>
+        </div>
+        
+        <!--Cart-->
+        <div class="cart">
+            <h1 class="card-title">Shopping Cart</h1>
+
+            <!--Cart content-->
+            <ul class="listCart"></ul>
+            <div class="checkout">
+                <div class="total">$ 0 </div>
+                <div class="cart-close">Cerrar</div>
+            </div>
         </div>`;
 
 document.querySelector("header").innerHTML = headerJS;
+
+/* Redirecciona a productos.html cada vez que se hace clic en el icono del carrito */
+document.getElementById("cart-btn").addEventListener("click", () => {
+    window.location.href = "productos.html";
+});
 
 /* Footer */
 const footerJS = `

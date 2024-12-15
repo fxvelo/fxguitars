@@ -162,19 +162,110 @@ products.forEach(product => {
     article.classList.add("product-item");
     
     article.innerHTML = `
-        <a href="detail.html" onclick="abrirDetalle(${product.id})"><img src="${product.image}" alt="${product.model}"></a>
+        <a href="detalle.html" onclick="abrirDetalle(${product.id})"><img src="${product.image}" alt="${product.model}"></a>
         <div>
             <h3>${product.model}</h3>
             <h5>${product.color}</h5>
             <h5 class="price">$ ${product.price}</h5>
-            <a class="btn-add-cart" href="detail.html" onclick="abrirDetalle(${product.id})">Ver detalles</a>
+            <a class="btn-add-cart" onclick="addToCart(${product.id})">Agregar al carrito</a>
+            <a class="btn-more-info" href="detalle.html" onclick="abrirDetalle(${product.id})">Ver detalles</a>
         </div> 
     `;
 
     section.appendChild(article);
 });
 
+/* Elementos del DOM del carrito */
+const cartIcon = document.querySelector('#cart-btn');
+const cart = document.querySelector('.cart');
+const closeCart = document.querySelector('.cart-close');
+const list = document.querySelector('.list');
+const listCart = document.querySelector('.listCart');
+const total = document.querySelector('.total');
+const quantity = document.querySelector('.quantity');
+
+/* Evento para mostrar el carrito al hacer clic en el icono del carrito */
+cartIcon.addEventListener('click', () => {
+    cart.classList.add('active');
+});
+
+/* Evento para cerrar el carrito al hacer clic en el botón de cerrar */
+closeCart.addEventListener('click', () => {
+    cart.classList.remove('active');
+});
+
+let listCards = [];
+
 function abrirDetalle(the_id) {
-    /* En realidad guarda en sessionStorage the_id para que detail.html levante los datos del producto con id = the_id */
-    sessionStorage.setItem ('producto', the_id);
+    /* En realidad guarda en sessionStorage the_id para que mainDetalle.js levante los datos del producto con id = the_id */
+    sessionStorage.setItem ('detalle', the_id);
+}
+
+/* Función para cambiar la cantidad de un producto en el carrito */
+function changeQuantity(key, quantity){
+    /* Verificar si la nueva cantidad es 0 */
+    if(quantity == 0){
+
+        /* Eliminar el producto del carrito si la cantidad es 0 */
+        delete listCards[key];
+
+    } else {
+        /* Actualizar la cantidad del producto y recalcular el precio total */
+        listCards[key].quantity = quantity;
+        listCards[key].price = quantity * products[key].price;
+    }
+
+    /* Actualizar la visualización del carrito */
+    reloadCart();
+}
+
+function reloadCart() {
+    /* Limpio el contenido del carrito */
+    listCart.innerHTML = '';
+    let count = 0;
+    let totalPrice = 0;
+    
+    /* Iterar sobre los productos en el carrito */
+    listCart.forEach((value, key) => {
+        
+        /* Calcular el precio total y la cantidad de productos en el carrito */
+        totalPrice = totalPrice + value.price;
+        count = count + value.quantity;
+        
+        /* Verificar si el producto no es nulo */
+        if(value != null) {
+        
+            /* Crear elementos HTML para mostrar el producto en el carrito */
+            let newDiv = document.createElement('li');
+            newDiv.innerHTML = `
+                <div><img src="${value.image}"/></div>
+                <div class="product-name">${value.name}</div>
+                <div class="product-price">${value.price.toLocaleString()}</div>
+                <div>
+                    <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
+                    <div class="count">${value.quantity}</div>
+                    <button onclick="changeQuantity(${key}, ${value.quantity + 1})">+</button>
+                </div>`;
+
+                /* Agregar el nuevo elemento al carrito */
+                listCart.appendChild(newDiv);        
+        
+        }
+    })
+    /* Mostrar el precio total y la cantidad de productos en el carrito */
+    total.innerText = totalPrice.toLocaleString();
+    quantity.innerText = count;
+}
+
+        
+function addToCart (the_id) {
+    /* verifico si el producto está en el carrito, si no lo agrego */
+    if(listCards[key] == null) {
+        /* Copiar el producto de la lista al carrito */
+        listCards[key] = JSON.parse(JSON.stringify(products[key]));
+        
+        /* Inicializo la cantidad del producto en 1 */
+        listCards[key].quantity = 1;
+    }  
+    reloadCart();
 }

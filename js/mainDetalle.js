@@ -1,7 +1,7 @@
 /* mainDetalle.js */
 
 /* lee sessionStorage para enterarse el ID del producto a mostrar */
-let id = sessionStorage.getItem ('producto');
+let id = sessionStorage.getItem ('detalle');
 
 /* Los indices del array estan basados en 0, mientras que los ID parten de 1 */
 let idx = id - 1;
@@ -146,7 +146,7 @@ main.innerHTML = `
                 <h2>${details[idx].model}</h2>
                 <h4>${details[idx].color}</h4>
                 <h4 class="price">$ ${details[idx].price}</h4>
-                <a class="btn-add-cart" href="${idx}">Agregar al carrito</a>
+                <a class="btn-add-cart" onclick="window.history.back()">Regresar</a>
             </div>
 
             <div>
