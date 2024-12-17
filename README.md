@@ -8,8 +8,10 @@ Es un ejemplo de sitio web para un luthier, realizado para Talento Tech 2024, ut
 * Google Fonts  
 * Responsive Web Design usando Flexbox, Grid y Media Queries  
 * Formspree para el manejo de datos del formulario
-* Generación de la página de productos desde un JSON usando manipulacón del DOM
-* Generación de la vista de detalle del producto en JS y usando la API localStorage/sessionStorage
+* Toda la aplicación está contenida en dos archivos JS:
+  * headerFooter.js: contiene las etiquetas <header> y <footer> del sitio
+  * dyna-site.js: gestiona la etiqueta <main> de cada página según se solicite
+* Se utiliza la API sessionStorage para guardar variables de sesión que necesita dyna-site.js
 
 ## ToDo
 
