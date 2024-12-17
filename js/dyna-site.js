@@ -221,7 +221,7 @@ switch (main) {
                     <h2>${products[idx].model}</h2>
                     <h4>${products[idx].color}</h4>
                     <h4 class="price">$ ${products[idx].price}</h4>
-                    <a class="btn-add-cart" onclick="loadMain('productos')">Regresar</a>
+                    <a class="btn-add-cart" href="index.html" onclick="loadMain('productos')">Regresar</a>
                 </div>
 
                 <div>
