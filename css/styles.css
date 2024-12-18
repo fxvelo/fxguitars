@@ -123,7 +123,7 @@ main h1 {
     padding-top: 1rem;
 }
 
-/* index.html */
+/* index */
 
 /* panel-image */
 
@@ -199,7 +199,7 @@ main h1 {
     color:var(--orange-color);
 }
 
-/* detail-*.html */
+/* detalle */
 
 /* detail-block */
 
@@ -258,7 +258,7 @@ th, td {
     padding: 0.5rem;
 }
 
-/* productos.html */
+/* productos */
 
 /* product-container */
 
@@ -306,17 +306,16 @@ th, td {
 }
 
 .cart-title {
-    padding: 0 20px ;
-    height: 80px;
+    padding: 0 20px;
     margin: 0;
+    height: 50px;
     display: flex;
     align-items: center;
     color: var(--black-color);
-    font-weight: 500;
-    text-transform: uppercase;
+    font-weight: 600;
 }
 
-.cart.checkout {
+#cart .checkout {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -324,7 +323,7 @@ th, td {
     grid-template-columns: repeat(2, 1fr);
 }
 
-.cart .checkout div {
+#cart .checkout div {
     background-color: var(--text-color);
     width: 100%;
     height: 50px;
@@ -332,11 +331,11 @@ th, td {
     justify-content: center;
     align-items: center;
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
 }
 
-.cart .checkout div:nth-child(2) {
+#cart .checkout div:nth-child(2) {
     background-color: var(--brown-color);
     color: var(--text-color);
 }
@@ -344,7 +343,7 @@ th, td {
 .listCart li {
     display: grid;
     grid-template-columns: 100px repeat(3, 1fr);
-    color: var(--text-color);
+    color: var(--black-color);
     row-gap: 10px;
     margin-bottom: 20px;
 }
@@ -356,13 +355,13 @@ th, td {
 }
 
 .listCart .product-name {
-    font-size: 1.5rem;
-    color: var(--text-color);
+    font-size: 0.9rem;
+    color: var(--black-color);
 }
 
 .listCart .product-price {
-    font-size: 1.5rem;
-    color: var(--text-color);
+    font-size: 0.9rem;
+    color: var(--black-color);
 }
 
 .listCart li img {
@@ -380,9 +379,7 @@ th, td {
 }
 
 
-/* contacto.html */
-
-/* mainContacto */
+/* contacto */
 
 #mainContacto {
     display: flex;
@@ -437,7 +434,7 @@ font-weight: bold;
 }
 
 
-/* acerca.html */
+/* acerca */
 
 span {
     font-family: "Charm", serif;
