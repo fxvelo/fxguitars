@@ -1,14 +1,12 @@
 /* dyna-site.js */
 
-/* El contenido de main es el anterior mainModule.js */
-
 /* Lee sessionStorage para enterarse que <main> insertar */
 let main = sessionStorage.getItem ('main');
 
 /* Array de productos */
 let products = [
     {
-        id: 1,
+        id: 0,
         model: "Hellfire Extreme",
         color: "Blood Burst",
         body: "Fresno del pantano",
@@ -29,7 +27,7 @@ let products = [
         price: 2500.00
     },
     {
-        id: 2,
+        id: 1,
         model: "Stardust II",
         color: "Charcoal Satin",
         body: "Caoba hondureña",
@@ -50,7 +48,7 @@ let products = [
         price: 2500.00
     },
     {
-        id: 3,
+        id: 2,
         model: "Red Special Tribute",
         color: "Original Red",
         body: "Cerezo americano",
@@ -71,7 +69,7 @@ let products = [
         price: 3000.00
     },
     {
-        id: 4,
+        id: 3,
         model: "FrankenStrat SE",
         color: "Red/White/Black Striped Relic",
         body: "Tilo americano",
@@ -92,7 +90,7 @@ let products = [
         price: 3000.00
     },
     {
-        id: 5,
+        id: 4,
         model: "Shark Tail",
         color: "Black Satin",
         body: "Caoba hondureña",
@@ -113,7 +111,7 @@ let products = [
         price: 3000.00
     },
     {
-        id: 6,
+        id: 5,
         model: "Snow Storm",
         color: "Snow White",
         body: "Aliso americano",
@@ -136,13 +134,89 @@ let products = [
 ];
 
 /* Guarda en sessionStorage el parámetro main de la próxima página a cargar */
-function loadMain(value) {
-    sessionStorage.setItem('main', value);
+function loadMain(the_value) {
+    sessionStorage.setItem('main', the_value);
 }
 
 /* Guarda en sessionStorage el ID del producto a mostrar su detalle */
 function abrirDetalle(the_id) {
     sessionStorage.setItem ('detalle', the_id);
+}
+
+var listCarts = [];
+
+/* Elementos del DOM del carrito */
+const listCart = document.querySelector('.listCart');
+const total = document.querySelector('.total');
+
+function addToCart(the_id) {
+    /* verifico si el producto está en el carrito, si no lo agrego */
+    if(listCarts[the_id] == null) {
+        
+        /* Copiar el producto de la lista al carrito */
+        listCarts[the_id] = JSON.parse(JSON.stringify(products[the_id]));
+
+        /* Inicializo la cantidad del producto en 1 */
+        listCarts[the_id].quantity = 1;
+    }  
+    console.log(listCarts);
+    reloadCart();
+}
+
+/* Función para cambiar la cantidad de un producto en el carrito */
+function changeQuantity(key, quantity){
+    /* Verificar si la nueva cantidad es 0 */
+    if(quantity == 0){
+
+        /* Eliminar el producto del carrito si la cantidad es 0 */
+        delete listCarts[key];
+
+    } else {
+        /* Actualizar la cantidad del producto y recalcular el precio total */
+        listCarts[key].quantity = quantity;
+        listCarts[key].price = quantity * products[key].price;
+    }
+
+    /* Actualizar la visualización del carrito */
+    reloadCart();
+}
+
+function reloadCart() {
+    /* Limpio el contenido del carrito */
+    listCart.innerHTML = '';
+    let count = 0;
+    let totalPrice = 0;
+    
+    /* Iterar sobre los productos en el carrito */
+    listCarts.forEach((value, key) => {
+        
+        /* Calcular el precio total y la cantidad de productos en el carrito */
+        totalPrice = totalPrice + value.price;
+        count = count + value.quantity;
+        
+        /* Verificar si el producto no es nulo */
+        if (value != null) {
+        
+            /* Crear elementos HTML para mostrar el producto en el carrito */
+            let newDiv = document.createElement('li');
+            newDiv.innerHTML = `
+                <div><img src="${value.image}"/></div>
+                <div class="product-name">${value.model}</div>
+                <div class="product-price">$ ${value.price.toLocaleString()}</div>
+                <div>
+                    <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
+                    <div class="count">${value.quantity}</div>
+                    <button onclick="changeQuantity(${key}, ${value.quantity + 1})">+</button>
+                </div>`;
+
+            /* Agregar el nuevo elemento al carrito */
+            listCart.appendChild(newDiv);        
+        
+        }
+    })
+    /* Mostrar el precio total y la cantidad de productos en el carrito */
+    total.innerText = "$ " + totalPrice.toLocaleString();
+    listCarts.quantity.innerText = count;
 }
 
 /* main tiene el valor de la seccion <main> que se necesita cargar */ 
@@ -203,25 +277,21 @@ switch (main) {
             document.querySelector("main").innerHTML = mainContactoJS;
         break;
         
-  case 'detalle':
-        /* lee sessionStorage para enterarse el ID del producto a mostrar */
+    case 'detalle':
+        /* Lee sessionStorage para enterarse el ID del producto a mostrar */
         let id = sessionStorage.getItem ('detalle');
 
-        /* Los indices del array estan basados en 0, mientras que los ID parten de 1 */
-        let idx = id - 1;
-
-        /* Crea una referencia al <main> de detalle.html */
         const mainDetalleJS = `
             <div id="detail-block">
                 <div class="detail-image">
-                    <img src="${products[idx].image}" alt="${products[idx].model}">
+                    <img src="${products[id].image}" alt="${products[id].model}">
                 </div>
 
                 <div>
-                    <h2>${products[idx].model}</h2>
-                    <h4>${products[idx].color}</h4>
-                    <h4 class="price">$ ${products[idx].price}</h4>
-                    <a class="btn-add-cart" href="index.html" onclick="loadMain('productos')">Regresar</a>
+                    <h2>${products[id].model}</h2>
+                    <h4>${products[id].color}</h4>
+                    <h4 class="price">$ ${products[id].price}</h4>
+                    <a class="btn-add-cart" href="index.html" onclick="loadMain('productos')">Volver</a>
                 </div>
 
                 <div>
@@ -231,67 +301,67 @@ switch (main) {
                         </tr>
                         <tr>
                             <th>Modelo</th>
-                            <td>${products[idx].model}</td>
+                            <td>${products[id].model}</td>
                         </tr>
                         <tr>
                             <th>Color</th>
-                            <td>${products[idx].color}</td>
+                            <td>${products[id].color}</td>
                         </tr>
                         <tr>
                             <th>Cuerpo</th>
-                            <td>${products[idx].body}</td>
+                            <td>${products[id].body}</td>
                         </tr>
                         <tr>
                             <th>Mango</th>
-                            <td>${products[idx].neck}</td>
+                            <td>${products[id].neck}</td>
                         </tr>
                         <tr>
                             <th>Diapasón</th>
-                            <td>${products[idx].fretboard}</td>
+                            <td>${products[id].fretboard}</td>
                         </tr>
                         <tr>
                             <th>Incrustaciones</th>
-                            <td>${products[idx].inlays}</td>
+                            <td>${products[id].inlays}</td>
                         </tr>
                         <tr>
                             <th>Escala</th>
-                            <td>${products[idx].scale}</td>
+                            <td>${products[id].scale}</td>
                         </tr>
                         <tr>
                             <th>Radio</th>
-                            <td>${products[idx].radio}</td>
+                            <td>${products[id].radio}</td>
                         </tr>
                         <tr>
                             <th>Trastes</th>
-                            <td>${products[idx].frets}</td>
+                            <td>${products[id].frets}</td>
                         </tr>
                         <tr>
                             <th>Cejilla</th>
-                            <td>${products[idx].nut}</td>
+                            <td>${products[id].nut}</td>
                         </tr>
                         <tr>
                             <th>Tensor</th>
-                            <td>${products[idx].tensor}</td>
+                            <td>${products[id].tensor}</td>
                         </tr>
                         <tr>
                             <th>Clavijas</th>
-                            <td>${products[idx].tuners}</td>
+                            <td>${products[id].tuners}</td>
                         </tr>
                         <tr>
                             <th>Puente</th>
-                            <td>${products[idx].bridge}</td>
+                            <td>${products[id].bridge}</td>
                         </tr>
                         <tr>
                             <th>Micrófonos</th>
-                            <td>${products[idx].pickups}</td>
+                            <td>${products[id].pickups}</td>
                         </tr>
                         <tr>
                             <th>Electrónica</th>
-                            <td>${products[idx].electronics}</td>
+                            <td>${products[id].electronics}</td>
                         </tr>
                         <tr>
                             <th>Terminación</th>
-                            <td>${products[idx].finishing}</td>
+                            <td>${products[id].finishing}</td>
                         </tr>
                     </table>
                 </div>    
@@ -329,6 +399,29 @@ switch (main) {
         });
 
         break;  
+
+    case 'carrito':
+
+
+        break;
+/*
+
+    <!--Cart-->
+    <div id="cart">
+        <h3 class="cart-title">Carrito</h3>
+
+        <!--Cart content-->
+        <ul class="listCart"></ul>
+        <div class="checkout">
+            <div class="total">$ 0 </div>
+            <div class="cart-close">Cerrar</div>
+        </div>
+    </div>
+
+*/
+
+
+        
 
     case 'index':  
     default:
