@@ -1,8 +1,8 @@
 /* headerFooter.js */
 
 /* Guarda en sessionStorage el parámetro main de la próxima página a cargar */
-function loadMain(value) {
-    sessionStorage.setItem('main', value);
+function loadMain(the_value) {
+    sessionStorage.setItem('main', the_value);
 }
 
 /* Header */
@@ -89,3 +89,9 @@ const cartShop = document.querySelector('#cart');
 document.querySelector('#cart-btn').onclick = () => {
     cartShop.classList.toggle('active');
 }
+
+/* Cierra el popup del carrito mediante su btn */
+const closeCart = document.querySelector('.cart-close');
+closeCart.addEventListener('click', () => {
+    cartShop.classList.remove('active');
+});
