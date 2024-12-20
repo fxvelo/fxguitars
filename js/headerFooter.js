@@ -22,14 +22,12 @@ const headerJS = `
         <div id="menu-btn"><i class="fas fa-bars"></i></div>
     </div>
     
-    <!--Cart-->
     <div id="cart">
         <h3 class="cart-title">Carrito</h3>
 
-        <!--Cart content-->
         <ul class="listCart"></ul>
         <div class="checkout">
-            <div class="total">$ 0 </div>
+            <div class="total">$ 0</div>
             <div class="cart-close">Cerrar</div>
         </div>
     </div>`;
@@ -90,7 +88,7 @@ document.querySelector('#cart-btn').onclick = () => {
     cartShop.classList.toggle('active');
 }
 
-/* Cierra el popup del carrito mediante su btn */
+/* Cierra el popup del carrito mediante su botón Cerrar */
 const closeCart = document.querySelector('.cart-close');
 closeCart.addEventListener('click', () => {
     cartShop.classList.remove('active');
