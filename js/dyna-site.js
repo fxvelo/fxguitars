@@ -3,6 +3,8 @@
 /* Lee sessionStorage para enterarse que <main> insertar */
 let main = sessionStorage.getItem ('main');
 
+var listCarts = [];
+
 /* Array de productos */
 let products = [
     {
@@ -143,8 +145,6 @@ function abrirDetalle(the_id) {
     sessionStorage.setItem ('detalle', the_id);
 }
 
-var listCarts = [];
-
 /* Elementos del DOM del carrito */
 const listCart = document.querySelector('.listCart');
 const total = document.querySelector('.total');
@@ -211,12 +211,12 @@ function reloadCart() {
 
             /* Agregar el nuevo elemento al carrito */
             listCart.appendChild(newDiv);        
-        
         }
-    })
+    });
+
     /* Mostrar el precio total y la cantidad de productos en el carrito */
     total.innerText = "$ " + totalPrice.toLocaleString();
-    listCarts.quantity.innerText = count;
+    listCarts.quantity.innerText = count;   
 }
 
 /* main tiene el valor de la seccion <main> que se necesita cargar */ 
@@ -399,29 +399,6 @@ switch (main) {
         });
 
         break;  
-
-    case 'carrito':
-
-
-        break;
-/*
-
-    <!--Cart-->
-    <div id="cart">
-        <h3 class="cart-title">Carrito</h3>
-
-        <!--Cart content-->
-        <ul class="listCart"></ul>
-        <div class="checkout">
-            <div class="total">$ 0 </div>
-            <div class="cart-close">Cerrar</div>
-        </div>
-    </div>
-
-*/
-
-
-        
 
     case 'index':  
     default:
