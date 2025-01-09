@@ -56,10 +56,10 @@ const footerJS = `
 
         <div class="footer-box">
             <h3>Enlaces</h3>
-            <a href="index.html">Inicio</a>
-            <a href="productos.html">Productos</a>
-            <a href="acerca.html">Acerca de</a>
-            <a href="contacto.html">Contacto</a>
+            <a href="index.html" onclick="loadMain('index')">Inicio</a>
+            <a href="index.html" onclick="loadMain('productos')">Productos</a>
+            <a href="index.html" onclick="loadMain('acerca')">Acerca de</a>
+            <a href="index.html" onclick="loadMain('contacto')">Contacto</a>
         </div>
 
         <div class="footer-box">
